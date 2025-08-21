@@ -109,18 +109,20 @@ const getNearbyPros = async (req, res) => {
 
     const nearbyPros = await ProCoverageModel.sequelize.query(
       `
-      SELECT address_id, pro_id, pincode, latitude, longitude, radius_km,
-        (6371 * acos(
-            cos(radians(:userLat)) *
-            cos(radians(latitude)) *
-            cos(radians(longitude) - radians(:userLon)) +
-            sin(radians(:userLat)) *
-            sin(radians(latitude))
-        )) AS distance
-      FROM ProCoverage
-      HAVING distance <= :searchRadius
-      ORDER BY distance ASC
-      `,
+  SELECT address_id, pro_id, pincode, latitude, longitude, radius_km,
+    ROUND(
+      (6371 * acos(
+          cos(radians(:userLat)) *
+          cos(radians(latitude)) *
+          cos(radians(longitude) - radians(:userLon)) +
+          sin(radians(:userLat)) *
+          sin(radians(latitude))
+      )), 2
+    ) AS distance
+  FROM ProCoverage
+  HAVING distance <= :searchRadius AND distance <= radius_km
+  ORDER BY distance ASC
+  `,
       {
         replacements: { userLat, userLon, searchRadius },
         type: ProCoverageModel.sequelize.QueryTypes.SELECT,
