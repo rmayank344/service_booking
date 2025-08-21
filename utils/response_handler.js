@@ -1,7 +1,8 @@
 // Function to send success response
-exports.send_success_response = (res, data, status_code = 200, extra = {}) => {
+exports.send_success_response = (res, message, status_code = 200, data  = {}) => {
   res.status(status_code).json({
     success: true,
+    message: message,
     data: data,
   });
 };

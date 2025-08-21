@@ -23,6 +23,12 @@ app.use(cors({
 //auth routes
 app.use('/api/user/v1/auth-route', require("./routes/auth_routes"));
 
+//category routes for admin
+app.use('/api/admin/v1/catalog', require("./routes/catalog_routes"));
+
+//category routes for user
+app.use('/api/user/v1/catalog', require("./routes/catalog_routes"));
+
 app.listen(process.env.PORT, '0.0.0.0', () => {
   console.log(`server is running on port ${process.env.PORT}`);
 });
