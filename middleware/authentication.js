@@ -47,4 +47,34 @@ const validate_auth_token = async (req, res, next) => {
   }
 };
 
-module.exports = { validate_auth_token };
+// verified admin role
+const admin_access = async (req, res, next) => {
+  try {
+    if (req.role === 'customer' || req.role === 'pro') {
+      return response_handler.send_error_response(
+        res, "Only Admin can access this page.", 400
+      )
+    }
+    next();
+  }
+  catch (err) {
+    return handleCaughtError(err, res);
+  }
+};
+
+// verified pro role
+const pro_access = async (req, res, next) => {
+  try {
+    if (req.role === 'customer' || req.role === 'admin') {
+      return response_handler.send_error_response(
+        res, "Only pro can access this page.", 400
+      )
+    }
+    next();
+  }
+  catch (err) {
+    return handleCaughtError(err, res);
+  }
+};
+
+module.exports = { validate_auth_token, admin_access, pro_access };
