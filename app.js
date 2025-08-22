@@ -36,6 +36,9 @@ app.use('/api/pro/v1', require("./routes/pro_availability_routes"));
 // service booking routes
 app.use('/api/user/v1', require("./routes/booking_routes"));
 
+// service rating routes
+app.use('/api/user/v1/rating', require("./routes/rating_routes"));
+
 app.listen(process.env.PORT, '0.0.0.0', () => {
   console.log(`server is running on port ${process.env.PORT}`);
 });

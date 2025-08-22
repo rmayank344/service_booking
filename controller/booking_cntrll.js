@@ -104,20 +104,16 @@ const confirmBooking = async (req, res) => {
       return response_handler.send_error_response(res, "Missing required fields", 400);
     }
 
-    console.log(`[${pro_id}] Trying to acquire lock on booking ${booking_id}`);
     const booking = await BookingModel.findOne({
       where: { booking_id },
       transaction: t,
       lock: t.LOCK.UPDATE,
     });
-    console.log(`[${pro_id}] Lock acquired on booking ${booking_id}`);
 
     if (!booking) {
       return response_handler.send_error_response(res, "Booking not found", 404);
     }
 
-       console.log(`[${pro_id}] Simulating long processing...`);
-    await new Promise(resolve => setTimeout(resolve, 30000));
 
     const slot = await ProAvailabilityModel.findOne({
       where: { slot_id: booking.slot_id },
