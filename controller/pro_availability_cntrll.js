@@ -42,7 +42,7 @@ const createProAvailability = async (req, res) => {
       day_of_week,
       start_time,
       end_time,
-      is_active:  true
+      is_booked:false
     });
 
     return response_handler.send_success_response(res, "Pro availability slot created successfully", 201, slot);
