@@ -43,9 +43,9 @@ const ProAvailabilityModel = sequelize.define(
       type: DataTypes.TIME,
       allowNull: false,
     },
-    is_active: {
+    is_booked: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true,
+      defaultValue: false,
     },
   },
   {
