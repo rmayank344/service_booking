@@ -1,0 +1,961 @@
+{
+	"info": {
+		"_postman_id": "0cdf42f4-1630-4191-835d-21024230cf58",
+		"name": "Service Booking API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32903107"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "user signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{customer-api-key}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{pro-api-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"pro1@gmail.com\",\r\n  \"password\": \"Pro@1234\",\r\n  \"name\": \"Pro1 Raj\",\r\n  \"country_code\": \"91\",\r\n  \"phone\": \"9276543234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/auth-route/signup",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"auth-route",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{customer-api-key}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{pro-api-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\": \"pro1@gmail.com\",\r\n  \"password\": \"Pro@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/auth-route/login",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"auth-route",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user get profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{x-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/auth-route/me?id=1",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"auth-route",
+								"me"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Catalog",
+			"item": [
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "Admin Create Category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{admin-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"CAR\",\r\n  \"description\": \"Home and office CAR services\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{service-host}}api/admin/v1/catalog/create-categories",
+									"host": [
+										"{{service-host}}api"
+									],
+									"path": [
+										"admin",
+										"v1",
+										"catalog",
+										"create-categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Get Single Category",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{admin-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{service-host}}api/user/v1/catalog/get-single-categories?id=2",
+									"host": [
+										"{{service-host}}api"
+									],
+									"path": [
+										"user",
+										"v1",
+										"catalog",
+										"get-single-categories"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Get Category",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{admin-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{service-host}}api/user/v1/catalog/get-categories?page=2&limit=2",
+									"host": [
+										"{{service-host}}api"
+									],
+									"path": [
+										"user",
+										"v1",
+										"catalog",
+										"get-categories"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Service",
+					"item": [
+						{
+							"name": "Create Service",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{admin-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"category_id\": 2,\r\n  \"service_name\": \"AC Water chnage\",\r\n  \"service_description\": \"Full AC Water change including interior and exterior cleaning\",\r\n  \"price\": 450.00\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{service-host}}api/admin/v1/catalog/create-service",
+									"host": [
+										"{{service-host}}api"
+									],
+									"path": [
+										"admin",
+										"v1",
+										"catalog",
+										"create-service"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get ALL Service",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{admin-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{service-host}}api/user/v1/catalog/get-services?categoryId=2&page=1&limit=6",
+									"host": [
+										"{{service-host}}api"
+									],
+									"path": [
+										"user",
+										"v1",
+										"catalog",
+										"get-services"
+									],
+									"query": [
+										{
+											"key": "categoryId",
+											"value": "2"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Service By Id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{customer-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{customer-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{service-host}}api/user/v1/catalog/get-single-services?serviceId=2",
+									"host": [
+										"{{service-host}}api"
+									],
+									"path": [
+										"user",
+										"v1",
+										"catalog",
+										"get-single-services"
+									],
+									"query": [
+										{
+											"key": "serviceId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Add Ons",
+					"item": [
+						{
+							"name": "Create Admin Add-Ons",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{admin-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"service_id\": 2,\r\n  \"name\": \"Pextra Cleaning\",\r\n  \"price\": 510.00\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{service-host}}api/admin/v1/catalog/services/addons",
+									"host": [
+										"{{service-host}}api"
+									],
+									"path": [
+										"admin",
+										"v1",
+										"catalog",
+										"services",
+										"addons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Extra Add-Ons",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin-api-key}}",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{admin-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{service-host}}api/admin/v1/catalog/services/addonsId?service_id=2",
+									"host": [
+										"{{service-host}}api"
+									],
+									"path": [
+										"admin",
+										"v1",
+										"catalog",
+										"services",
+										"addonsId"
+									],
+									"query": [
+										{
+											"key": "service_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "add customer address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{customer-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{customer-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customer_id\": 1,\r\n  \"address_line\": \"123 MG Road\",\r\n  \"city\": \"Bangalore\",\r\n  \"state\": \"Karnataka\",\r\n  \"pincode\": \"560001\",\r\n  \"latitude\": 12.9716,\r\n  \"longitude\": 77.5946\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/location/add-address",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"location",
+								"add-address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add pro address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{pro-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{pro-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pro_id\": 4,\r\n  \"pincode\": \"110001\",\r\n  \"latitude\": 28.6020,\r\n  \"longitude\": 77.2295,\r\n  \"radius_km\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/location/pro-add-coverage",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"location",
+								"pro-add-coverage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pro nearby",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{pro-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{pro-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pro_id\": 1,\r\n  \"pincode\": \"110001\",\r\n  \"latitude\": 28.6139,\r\n  \"longitude\": 77.2090,\r\n  \"radius_km\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/location/pro/nearby?latitude=28.6139&longitude=77.2090&radius=7",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"location",
+								"pro",
+								"nearby"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "28.6139"
+								},
+								{
+									"key": "longitude",
+									"value": "77.2090"
+								},
+								{
+									"key": "radius",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pro Availabilty",
+			"item": [
+				{
+					"name": "create pro availability",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{pro-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{pro-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pro_id\": 6,\r\n  \"service_id\": 1,\r\n  \"day_of_week\": 5,          \r\n  \"start_time\": \"15:00:00\",\r\n  \"end_time\": \"16:00:00\",\r\n  \"is_active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/pro/v1/create-availability",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"pro",
+								"v1",
+								"create-availability"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "create booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{customer-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{customer-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customer_id\": 1,\r\n  \"service_id\": 2,\r\n  \"addons\": [5],\r\n  \"start_time\": \"15:00:00\",\r\n  \"end_time\": \"16:00:00\",\r\n  \"slot_id\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/create-booking",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"create-booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{pro-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{pro-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"booking_id\": 11,\r\n  \"pro_id\": 7,\r\n  \"key\":\"COMPLETED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/confirm-booking",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"confirm-booking"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rating",
+			"item": [
+				{
+					"name": "create rating",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{customer-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{customer-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"booking_id\": 11,\r\n  \"pro_id\": 7,\r\n  \"rating\": 4.5,\r\n  \"review\": \"The service was excellent and delivered on time!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/rating/create-rating",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"rating",
+								"create-rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Rating",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{customer-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{customer-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/rating/getAll-rating",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"rating",
+								"getAll-rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rating By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{customer-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{customer-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{service-host}}api/user/v1/rating/getId-rating?id=1",
+							"host": [
+								"{{service-host}}api"
+							],
+							"path": [
+								"user",
+								"v1",
+								"rating",
+								"getId-rating"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
